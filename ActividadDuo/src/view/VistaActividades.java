@@ -69,7 +69,7 @@ public class VistaActividades extends javax.swing.JFrame {
         ExitButton.setBackground(new java.awt.Color(255, 255, 255));
         ExitButton.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         ExitButton.setForeground(new java.awt.Color(17, 55, 96));
-        ExitButton.setText("Regresar");
+        ExitButton.setText("Terminar intento");
         ExitButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -253,7 +253,7 @@ public class VistaActividades extends javax.swing.JFrame {
                         .addComponent(jLabelActividadPregunta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(ExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

@@ -2,7 +2,6 @@ package viewModel;
 
 import java.awt.Color;
 import java.awt.Font;
-import static java.awt.Font.PLAIN;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -22,17 +21,18 @@ public class ControladorActividad implements ActionListener{
     private ArrayList<ActividadStrings> actividades;
     private VistaActividades vista;
     private ArrayList<String> enunciados;
+    private ArrayList<Integer> ordenActividades;
     
     /*Atributos de los botones */
     private ArrayList<JButton> botones;
     private ArrayList<Integer> listaNumerosAleatoria;
     private int numBotonesPosicion2 = 0;
-    private final int xPosition = 50;
-    private final int xPosition2 =140;
+    private final int xPosition = 30;
+    private final int xPosition2 =128;
     private final int yPositionOpciones = 260;
     private final int yPositionRespuesta = 150;
-    private final int anchoBoton = 95;
-    private final int alturaBoton = 25;
+    private final int anchoBoton = 98;
+    private final int alturaBoton = 26;
     
     /*Puntuacion*/
     private int puntuacion = 0;
@@ -42,10 +42,12 @@ public class ControladorActividad implements ActionListener{
         this.enunciados = pregutas;
         this.botones = new ArrayList<>();
         this.listaNumerosAleatoria=new ArrayList<>();
+        this.ordenActividades = new ArrayList<>();
         this.actividades = acts;
         this.vista = new VistaActividades();
+        listaAleatoriaActividades();
         escucharBotonesMenu();
-        crearActividad(0);
+        crearActividad(ordenActividades.get(0));
         vista.setLocationRelativeTo(null);
         vista.setVisible(true);
     }
@@ -188,6 +190,25 @@ public class ControladorActividad implements ActionListener{
         }
     }
     
+    /*Devuelbe una lista aleatoria de numeros del 0 al 6 sin repetir para asignar el orden de las actividades */
+    private void listaAleatoriaActividades(){
+        Random r = new Random();
+        ArrayList<Integer> numbers = new ArrayList<>(7);
+        //Crea una lista de numeros aleatorios inicial
+        for (int i = 1; i < 7; i++) {
+           if(r.nextInt(2)==1){
+               numbers.add(i);
+           }
+        }
+        //completa la lista para que salgan todos los numeros
+        for (int i = 0; i < 7; i++) {
+            if(!numbers.contains(i)){
+                numbers.add(i);
+            }
+        }
+        this.ordenActividades = numbers;
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         /*Verifica la respuesta al pulsar el boton*/
@@ -201,25 +222,25 @@ public class ControladorActividad implements ActionListener{
         }
         /*Verifica cuando un radioButton se pulsa y crea una actividad para el mismo*/
         else if (e.getSource() == vista.jRadioButton1) {
-            crearActividad(0);
+            crearActividad(ordenActividades.get(0));
         }
         else if(e.getSource() == vista.jRadioButton2){
-            crearActividad(1);            
+            crearActividad(ordenActividades.get(1));            
         }
         else if(e.getSource() == vista.jRadioButton3){
-            crearActividad(2);
+            crearActividad(ordenActividades.get(2));
         }
         else if(e.getSource() == vista.jRadioButton4){
-            crearActividad(3);
+            crearActividad(ordenActividades.get(3));
         }
         else if(e.getSource() == vista.jRadioButton5){
-            crearActividad(4);
+            crearActividad(ordenActividades.get(4));
         }
         else if(e.getSource() == vista.jRadioButton6){
-            crearActividad(5);
+            crearActividad(ordenActividades.get(5));
         }
         else if(e.getSource() == vista.jRadioButton7){
-            crearActividad(6);
+            crearActividad(ordenActividades.get(6));
         }        
         /*Cambia la posicion de los botones si son pulsados*/
         else{
